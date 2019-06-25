@@ -53,12 +53,15 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
+
           <div className="title-container">
-            <h1 className="title-container_title"> Weather App </h1>
-            <p className="title-container_subtitle"> Weather conditions around the world! </p>
+            <h1 className="title-container-title"> Weather App </h1>
+            <p className="title-container-subtitle"> Weather conditions around the world! </p>
           </div>
+
           <div className="input"> 
-            <Form loadWeather={this.getWeather}/>
+            <Form className="input search-bar gogo" loadWeather={this.getWeather}/>
+
               <Weather 
                 temperature={this.state.temperature}
                 city={this.state.city}
