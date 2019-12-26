@@ -1,56 +1,36 @@
-html {
-  height: 100%;
-}
+
 body {
-  background-color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  height: 100%;
+  font-family: 'Heebo', sans-serif;
 }
-.App {
-  background-color: #fff;
+
+.App{
+  /* background-image: linear-gradient(to bottom right, #008080, #00cdcd); */
+  background-color: black;
+  width: auto;
+  height: 100vh;
   
 }
-.container {
-  background-color: #F2D9D9;
-  background-image: linear-gradient(to bottom right, #FCCFCF, #fff);
-  -webkit-box-shadow: 2px 2px 1px 1px#570F0F;
-
+.navbar {
+  display: flex;
 }
-.title-container {
-
-  
+.navbar h1 {
+  color: #3a619c;
+  margin-left: 10px;
 }
-.title-container-title {
-  color: #F76E6E;
-
-  font-size: 40px;
-  font-family: 'Open Sans', sans-serif;
-  text-shadow: 1px 1px 1px rgb(24, 1, 19);
-}
-.title-container-subtitle {
-  color: #F76E6E;
-  font-size: 20px;
-  font-family: 'Open Sans', sans-serif;
+.navbar form {
+  display: flex;
+  margin-left: 25px;
 }
 
-.container {
-  font-weight: normal;
-  color: rgb(0, 51, 0);
-  text-align: center;
-  width: 50%;
-  margin: 100px 100px;
-  padding: 40px 40px;
-}
 .inputForm {
-  margin: 5% 0;
-  padding: 4% 4%;
-  width: 100%;
+  padding: 5px;
+  width: 70vw;
+  margin: 25px 10px 18px 10px;
   background-color: white;
-  -webkit-box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.75);
 }
 
 .btn.btn-md.btn-danger{
-  margin: 10% 0;
+  margin-top: 25px;
   -webkit-box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.75);
 }
 
@@ -68,8 +48,6 @@ body {
   /* border: 2px solid lightskyblue; */
   padding: 0% 5%;
   margin: 5% 5%;
-  font-family: 'Open Sans', sans-serif;
-  
 }
 
 .weather-info {
@@ -104,6 +82,7 @@ body {
     margin: 0 auto;
     height: 622px;
   }
+  
   .input {
     flex-direction: column;
     flex-wrap: wrap;
