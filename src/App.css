@@ -21,6 +21,12 @@ body {
   display: flex;
   margin-left: 25px;
 }
+h1.loc {
+  font-size: 72px;
+}
+.weather-info .temp {
+  font-size: 80px;
+}
 
 .inputForm {
   padding: 5px;
@@ -45,26 +51,18 @@ body {
 }
 
 .input form {
-  /* border: 2px solid lightskyblue; */
-  padding: 0% 5%;
+  padding: 0% 1%;
   margin: 5% 5%;
 }
 
 .weather-info {
   padding-top: 5%;
+  color: #fff;
+  
 }
 
-.shown.location {
-  font-size: 20px;
-  margin-top: 20px;
-  letter-spacing: 0.15rem;
-  font-weight: bold;
-}
 .shown {
-  font-weight: normal;
-  color: #E05252;
-  font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 32px;
   
 }
 .shown.error {
@@ -74,6 +72,13 @@ body {
   font-weight: normal;
   
 }
+
+
+/* forecast */
+.card-wrapper {
+  display: flex;
+}
+
 
 @media (max-width: 767px) {
   .container {
