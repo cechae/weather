@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import './App.css';
 import Weather from './Weather';
 import Form from './form';
+import Forecast from './Forecast';
+import Convert from './Convert';
+
 
 class App extends Component {
   state = {
@@ -12,12 +15,10 @@ class App extends Component {
     description: undefined,
     error: undefined,
     forecast: undefined,
+    now: undefined,
 
   }
-  convert = (kelvin) => {
-    let answer = (kelvin - 273.15) * (9/5) + 32;
-    return Math.round(answer);
-  }
+  
   componentDidMount = () => {
     let d = document.getElementById("container")
     console.log(d)
@@ -43,10 +44,11 @@ class App extends Component {
       });
       return;
     } 
-    const fah = this.convert(response.main.temp);
+    const fah = Convert(response.main.temp);
 
     if (city){
       this.setState({
+        now: response,
         temperature: fah,
         city: response.name,
         humidity: response.main.humidity,
@@ -71,15 +73,18 @@ class App extends Component {
 
 
           <div className="input"> 
-            
-
               <Weather 
                 temperature={this.state.temperature}
                 city={this.state.city}
                 humidity={this.state.humidity}
                 description={this.state.description}
                 error={this.state.error} />
+              
            </div>
+           <Forecast
+                forecast = {this.state.forecast}
+                nowData = {this.state.now}
+              />
         </div>
       </div>
     );
