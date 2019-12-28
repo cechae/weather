@@ -16,23 +16,39 @@ class App extends Component {
     error: undefined,
     forecast: undefined,
     now: undefined,
-
+    temp_min: undefined,
+    temp_max: undefined,
+    
   }
-  
+  formatAMPM(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+  }
+
   componentDidMount = () => {
     let d = document.getElementById("container")
     console.log(d)
     d.className+=" show";
 
+    
+
   }
 
   getWeather = async(e) => {
     const city = e.target.elements.city.value;
+   
     // https://api.openweathermap.org/data/2.5/weather?q=new%20york,us&appid=dcde117d11e87b2ce285dbabf22a66bf
     //target api => https://api.openweathermap.org/data/2.5/forecast?q=London&appid=b6907d289e10d714a6e88b30761fae22
     
     e.preventDefault();
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.state.apikey}`);
+    console.log(api_call)
     const forecast_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.state.apikey}`);
     console.log(api_call)
     const response = await api_call.json();
@@ -44,17 +60,27 @@ class App extends Component {
       });
       return;
     } 
-    const fah = Convert(response.main.temp);
+    let timeNow = "";
+    if (city) {
+      let temp = new Date().toString().slice(0,15);
+      console.log(temp)
+      timeNow += temp;
+      timeNow += `  ${this.formatAMPM(new Date())}`;
+      console.log(timeNow)
+    }
 
     if (city){
       this.setState({
         now: response,
-        temperature: fah,
+        temperature: Convert(response.main.temp),
         city: response.name,
         humidity: response.main.humidity,
         description: response.weather[0].description,
         error: "",
         forecast: forecastRes.list,
+        temp_min: Convert(response.main.temp_min),
+        temp_max: Convert(response.main.temp_max),
+        timeNow: timeNow,
       })
     } else {
       this.setState({
@@ -78,8 +104,11 @@ class App extends Component {
                 city={this.state.city}
                 humidity={this.state.humidity}
                 description={this.state.description}
-                error={this.state.error} />
-              
+                error={this.state.error} 
+                temp_min={this.state.temp_min}
+                temp_max={this.state.temp_max}
+                timeNow={this.state.timeNow}
+                />
            </div>
            <Forecast
                 forecast = {this.state.forecast}

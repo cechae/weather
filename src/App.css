@@ -24,6 +24,9 @@ body {
 h1.loc {
   font-size: 72px;
 }
+.weather-info p {
+  font-size: 24px;
+}
 .weather-info .temp {
   font-size: 80px;
 }
@@ -56,13 +59,13 @@ h1.loc {
 }
 
 .weather-info {
-  padding-top: 5%;
+  padding: 2% 0 5% 0;
   color: #fff;
   
 }
 
 .shown {
-  font-size: 32px;
+  font-size: 24px;
   
 }
 .shown.error {
@@ -77,6 +80,18 @@ h1.loc {
 /* forecast */
 .card-wrapper {
   display: flex;
+}
+.card-body  {
+  color: #3a619c;
+  font-size: 16px;
+}
+.card-body .card-title {
+  font-size: 24px;
+}
+.high {
+  font-size: 24px;
+  margin-left: 40px;
+  justify-content: center;
 }
 
 
