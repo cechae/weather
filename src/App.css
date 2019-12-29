@@ -8,7 +8,8 @@ body {
   /* background-image: linear-gradient(to bottom right, #008080, #00cdcd); */
   background-color: #444444;
   width: auto;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   
 }
 .navbar {
@@ -69,11 +70,21 @@ h1.loc {
     font-size: 32px;
     font-weight: 700;
 }
+.page-wrapper {
+  margin-bottom: 32px;
+}
 .forecast {
   font-size: 24px;
   color: #fff;
+  
 }
-
+.icon-div {
+  margin-left:2rem;
+}
+.icon {
+  font-size: 30px;
+  margin: 1rem 0;
+}
 .shown {
   font-size: 24px;
   
