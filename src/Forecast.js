@@ -4,6 +4,12 @@ import Card from 'react-bootstrap/Card';
 import convert from './Convert';
 import "./App.css";
 
+// Clouds, Snow, Rain, Clear, 
+const icons = [<i class="icon far fa-cloud-sun"></i>,
+<i class="icon fas fa-snowflakes"></i>,
+<i class="icon fas fa-cloud-showers-heavy"></i>,
+<i class="icon fas fa-sun"></i>
+]
 class Forecast extends Component {
 
     formatAMPM(date) {
@@ -36,17 +42,35 @@ class Forecast extends Component {
                 let timeDisplay = this.formatAMPM(date);
                 let desc = i.weather[0].description;
                 let main = i.weather[0].main;
+                let selIcon;
+                switch(main) {
+                    case 'Clouds':
+                        selIcon = icons[0];
+                        break;
+                    case 'Snow':
+                        selIcon = icons[1];
+                        break;
+                    case 'Rain':
+                        selIcon = icons[2];
+                        break;
+                    case 'Clear':
+                        selIcon = icons[3];
+                        break;
+                    default:
+                        break;
+                }
                 // Clouds, Snow, Rain, Clear, 
 
             
                 return (
-                    <Card bg="lg" style={{ width: '18rem' }} id={idx}>
+                    <Card bg="lg" style={{ width: '13rem', margin: "0 2rem" }} id={idx}>
                     <Card.Body>
-                    <Card.Title><div>{timeDisplay}</div>  </Card.Title>
+                    {/* <Card.Title>  </Card.Title> */}
                     <Card.Text>
-                        <div className="bold"> {titleTemp} {'\u00b0'} F </div>
-                        <div className="icon"><i class="far fa-clouds"></i></div>
+                        <div className="bold"> {titleTemp}{'\u00b0'}F </div>
+                        <div className="icon-div">{selIcon}</div>
                         <div>{desc}</div>
+                        <div style={{fontSize: '26px'}}>{timeDisplay}</div>
                     </Card.Text>
                     </Card.Body>
                     </Card>
