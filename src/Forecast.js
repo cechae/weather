@@ -5,10 +5,10 @@ import convert from './Convert';
 import "./App.css";
 
 // Clouds, Snow, Rain, Clear, 
-const icons = [<i class="icon far fa-cloud-sun"></i>,
-<i class="icon fas fa-snowflakes"></i>,
-<i class="icon fas fa-cloud-showers-heavy"></i>,
-<i class="icon fas fa-sun"></i>
+const icons = [<i className="icon far fa-cloud-sun"></i>,
+<i className="icon fas fa-snowflakes"></i>,
+<i className="icon fas fa-cloud-showers-heavy"></i>,
+<i className="icon fas fa-sun"></i>
 ]
 class Forecast extends Component {
 
@@ -23,13 +23,6 @@ class Forecast extends Component {
         return strTime;
       }
 
-    constructor(props) {
-        super(props)
-        this.state = {
-
-        }
-    }
-
     render() {
         let forecastCards;
         if (this.props.forecast) {
@@ -38,7 +31,6 @@ class Forecast extends Component {
             forecastCards = this.props.forecast.slice(0,7).map((i,idx) => {
                 let titleTemp = convert(i.main.temp);
                 let date = new Date( i.dt *1000);
-                
                 let timeDisplay = this.formatAMPM(date);
                 let desc = i.weather[0].description;
                 let main = i.weather[0].main;
@@ -59,13 +51,9 @@ class Forecast extends Component {
                     default:
                         break;
                 }
-                // Clouds, Snow, Rain, Clear, 
-
-            
                 return (
-                    <Card bg="lg" style={{ width: '13rem', margin: "0 2rem" }} id={idx}>
+                    <Card bg="lg" style={{ width: '13rem', margin: "0 2rem" }} id={idx} key={idx}>
                     <Card.Body>
-                    {/* <Card.Title>  </Card.Title> */}
                     <Card.Text>
                         <div className="bold"> {titleTemp}{'\u00b0'}F </div>
                         <div className="icon-div">{selIcon}</div>
@@ -76,10 +64,7 @@ class Forecast extends Component {
                     </Card>
                 )
             })}
-        
-
         return (
-
             <div className="page-wrapper">
                 {this.props.forecast && 
                 <div>
@@ -93,10 +78,7 @@ class Forecast extends Component {
                 </div>
                 }
             </div>
-        
         )
-        
-
     }
 }
 export default Forecast;

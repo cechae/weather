@@ -5,7 +5,7 @@ import Form from './form';
 import Forecast from './Forecast';
 import Convert from './Convert';
 
-
+const urls = ["clouds", "snow","rain","clear"]
 class App extends Component {
   state = {
     apikey: 'dcde117d11e87b2ce285dbabf22a66bf',
@@ -18,7 +18,8 @@ class App extends Component {
     now: undefined,
     temp_min: undefined,
     temp_max: undefined,
-    
+    appIsMounted: false,
+    bgCls: ""
   }
   formatAMPM(date) {
     var hours = date.getHours();
@@ -31,26 +32,11 @@ class App extends Component {
     return strTime;
   }
 
-  componentDidMount = () => {
-    let d = document.getElementById("container")
-    console.log(d)
-    d.className+=" show";
-
-    
-
-  }
-
   getWeather = async(e) => {
     const city = e.target.elements.city.value;
-   
-    // https://api.openweathermap.org/data/2.5/weather?q=new%20york,us&appid=dcde117d11e87b2ce285dbabf22a66bf
-    //target api => https://api.openweathermap.org/data/2.5/forecast?q=London&appid=b6907d289e10d714a6e88b30761fae22
-    
     e.preventDefault();
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.state.apikey}`);
-    console.log(api_call)
     const forecast_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.state.apikey}`);
-    console.log(api_call)
     const response = await api_call.json();
     const forecastRes = await forecast_call.json();
     // check the status code
@@ -61,12 +47,28 @@ class App extends Component {
       return;
     } 
     let timeNow = "";
+    let clsName = "";
     if (city) {
       let temp = new Date().toString().slice(0,15);
-      console.log(temp)
       timeNow += temp;
       timeNow += `  ${this.formatAMPM(new Date())}`;
-      console.log(timeNow)
+      let main = response.weather[0].main;
+      switch(main) {
+        case 'Clouds':
+          clsName = 0;
+          break;
+        case 'Snow':
+          clsName = 1;
+            break;
+        case 'Rain':
+          clsName = 2;  
+            break;
+        case 'Clear':
+          clsName = 3;  
+            break;
+        default:
+          break;
+      }
     }
 
     if (city){
@@ -81,6 +83,8 @@ class App extends Component {
         temp_min: Convert(response.main.temp_min),
         temp_max: Convert(response.main.temp_max),
         timeNow: timeNow,
+        appIsMounted: true,
+        bgCls: clsName
       })
     } else {
       this.setState({
@@ -89,16 +93,26 @@ class App extends Component {
     }
   }
   render() {
+
+    let cls;
+    if (this.state.bgCls !== "") {
+      cls = this.state.bgCls !== "" ? urls[this.state.bgCls] : urls[0];
+      let x = document.querySelector('#app')
+      x.className = `App ${cls}`;
+    }
     return (
-      <div className="App">
+      <div className="App" id="app">
         <div className="navbar">
           <h1> Weather </h1>
           <Form className="input search-bar gogo" loadWeather={this.getWeather}/>
+          
         </div>
+        {!this.state.appIsMounted &&<div className="title-text">
+          <h2> Please type the name of the city to get started. </h2>
+        </div>}
+      {this.state.appIsMounted &&
         <div className="container" id="container">
-
-
-          <div className="input"> 
+         <div className="input"> 
               <Weather 
                 temperature={this.state.temperature}
                 city={this.state.city}
@@ -114,7 +128,7 @@ class App extends Component {
                 forecast = {this.state.forecast}
                 nowData = {this.state.now}
               />
-        </div>
+        </div>}
       </div>
     );
   }

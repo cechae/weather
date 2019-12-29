@@ -6,12 +6,34 @@ body {
 
 .App{
   /* background-image: linear-gradient(to bottom right, #008080, #00cdcd); */
-  background-color: #444444;
+  background-image: url("./weather.jpg");
   width: auto;
   min-height: 100vh;
   height: 100%;
-  
+  text-shadow: 0 1px black;
 }
+.title-text {
+  color: #fff;
+  text-align: center;
+}
+.clouds {
+  background-image: url("./cloudy3.jpg");
+  background-position: bottom;
+}
+.snow {
+  background-image: url("./snow.jpg");
+  background-position: right;
+}
+.rain {
+  background-image: url("./rainy4.jpg");
+  background-position: bottom;
+
+}
+.clear {
+  background-image: url("./clearsky.jpg");
+  background-size: cover;
+}
+
 .navbar {
   display: flex;
 }
@@ -62,7 +84,7 @@ h1.loc {
 }
 
 .weather-info {
-  padding: 0 0 5% 0;
+  padding: 0 0 3% 0;
   color: #fff;
   
 }
@@ -77,6 +99,9 @@ h1.loc {
   font-size: 24px;
   color: #fff;
   
+}
+.weather-info .conditions {
+  text-transform: capitalize;
 }
 .icon-div {
   margin-left:2rem;
