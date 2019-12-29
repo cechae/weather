@@ -1,11 +1,12 @@
 
 body {
   font-family: 'Heebo', sans-serif;
+  color: #fff;
 }
 
 .App{
   /* background-image: linear-gradient(to bottom right, #008080, #00cdcd); */
-  background-color: black;
+  background-color: #444444;
   width: auto;
   height: 100vh;
   
@@ -14,8 +15,8 @@ body {
   display: flex;
 }
 .navbar h1 {
-  color: #3a619c;
   margin-left: 10px;
+  color: #fff;
 }
 .navbar form {
   display: flex;
@@ -26,6 +27,7 @@ h1.loc {
 }
 .weather-info p {
   font-size: 24px;
+  margin-bottom: 0;
 }
 .weather-info .temp {
   font-size: 80px;
@@ -59,9 +61,17 @@ h1.loc {
 }
 
 .weather-info {
-  padding: 2% 0 5% 0;
+  padding: 0 0 5% 0;
   color: #fff;
   
+}
+.card-body .bold {
+    font-size: 32px;
+    font-weight: 700;
+}
+.forecast {
+  font-size: 24px;
+  color: #fff;
 }
 
 .shown {
@@ -82,7 +92,7 @@ h1.loc {
   display: flex;
 }
 .card-body  {
-  color: #3a619c;
+  color: #fff;
   font-size: 16px;
 }
 .card-body .card-title {

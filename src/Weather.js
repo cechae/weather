@@ -8,10 +8,10 @@ const Weather = (props) => {
             {props.timeNow && <p>{props.timeNow}</p>}
             {props.temperature && props.temp_min && props.temp_max&&
             <div style={{display:"flex"}}>
-                <p className="temp shown">{props.temperature} F</p>
+                <p className="temp shown">{props.temperature}{'\u00b0'} F</p>
                 <div className="high" style={{display:'flex', flexDirection:"column"}}>
-                    <p className="">High: {props.temp_max} F</p>
-                    <p className="">Low: {props.temp_min} F</p>
+                    <p className="">High: {props.temp_max}{'\u00b0'} F</p>
+                    <p className="">Low: {props.temp_min}{'\u00b0'} F</p>
                 </div>
 
             </div>

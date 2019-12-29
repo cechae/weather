@@ -20,32 +20,6 @@ class Forecast extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data_0: {
-                high: "",
-                low: "",
-                weather: "",
-            },
-            data_1: {
-                high: "",
-                low: "",
-                weather: "",
-            },
-            data_2: {
-                high: "",
-                low: "",
-                weather: "",
-            },
-            data_3: {
-                high: "",
-                low: "",
-                weather: "",
-            },
-            data_4: {
-                high: "",
-                low: "",
-                weather: "",
-            }
-
 
         }
     }
@@ -62,15 +36,16 @@ class Forecast extends Component {
                 let timeDisplay = this.formatAMPM(date);
                 let desc = i.weather[0].description;
                 let main = i.weather[0].main;
-                console.log("main is", main)
+                // Clouds, Snow, Rain, Clear, 
 
             
                 return (
                     <Card bg="lg" style={{ width: '18rem' }} id={idx}>
                     <Card.Body>
-                    <Card.Title>{titleTemp} F</Card.Title>
+                    <Card.Title><div>{timeDisplay}</div>  </Card.Title>
                     <Card.Text>
-                        <div>{timeDisplay}</div>
+                        <div className="bold"> {titleTemp} {'\u00b0'} F </div>
+                        <div className="icon"><i class="far fa-clouds"></i></div>
                         <div>{desc}</div>
                     </Card.Text>
                     </Card.Body>
@@ -83,8 +58,14 @@ class Forecast extends Component {
 
             <div className="page-wrapper">
                 {this.props.forecast && 
-                <div className="card-wrapper">
-                  {forecastCards}
+                <div>
+                    <div className="forecast">
+                        <p> Forecast (3 hours) </p>
+                    </div>
+                    
+                    <div className="card-wrapper">
+                    {forecastCards}
+                    </div>
                 </div>
                 }
             </div>
