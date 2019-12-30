@@ -6,7 +6,7 @@ const Form = (props) => {
             
             <input className="inputForm" type="text" name="city" placeholder="City..."/>
             
-            <div>
+            <div className="go-btn">
                 <button className="btn btn-md btn-danger"> Let's Go! </button>
             </div>
         
