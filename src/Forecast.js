@@ -58,7 +58,7 @@ class Forecast extends Component {
                         <div className="bold"> {titleTemp}{'\u00b0'}F </div>
                         <div className="icon-div">{selIcon}</div>
                         <div>{desc}</div>
-                        <div style={{fontSize: '26px'}}>{timeDisplay}</div>
+                        <div className="time-display" style={{fontSize: '26px'}}>{timeDisplay}</div>
                     </Card.Text>
                     </Card.Body>
                     </Card>
@@ -69,7 +69,6 @@ class Forecast extends Component {
                 {this.props.forecast && 
                 <div>
                     <div className="forecast">
-                        <p> Forecast (3 hours) </p>
                     </div>
                     
                     <div className="card-wrapper">
