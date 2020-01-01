@@ -205,5 +205,14 @@ h1.loc {
   .clear {
     background-position: bottom;
   }
+  .icon-div {
+    margin-left:0;
+  }
+  .card-body {
+    text-align: center;
+  }
+  .card-text{
+    margin-bottom:20px;
+  }
 
 }
